@@ -39,24 +39,42 @@ main {
     margin: 2rem auto;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
 main > div {
     flex: 1;
     max-width: 20rem;
-    height: 22rem;
-    padding: 3rem 1rem;
+    height: auto;
+    padding: 2rem 1rem;
     border: solid 0.15rem var(--cor-02);
     border-radius: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: 0.5s ease;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 main > div:hover {
     border-color: var(--cor-principal);
+}
+
+main h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    word-wrap: break-word; /* Quebra palavras longas */
+}
+
+.texto {
+    text-align: justify;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow: hidden;
+    word-wrap: break-word; /* Quebra palavras para caber */
 }
 
 .texto p {
@@ -70,6 +88,7 @@ main > div:hover {
 
 .texto p:first-child {
     display: block;
+    margin-bottom: 0.5rem;
 }
 
 button {
@@ -96,37 +115,35 @@ button:hover {
     height: 100%;
     background-color: var(--cor-alpha);
     z-index: 10;
-    display: none;
+    display: none; /* Esconde inicialmente */
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
+    overflow-y: auto; /* Permite rolagem */
 }
 
-/* Ajuste para centralizar modal-base */
+/* Modal Base */
 .modal-base {
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: var(--cor-04);
     box-shadow: 0 0.1rem 1rem 0 var(--cor-alpha);
-    max-width: 60vw; /* Garante uma largura máxima para o modal */
-    max-height: 80vh; /* Garante uma altura máxima para o modal */
-    width: 100%; /* Ajusta para dispositivos menores */
-    height: auto; /* Adapta o tamanho do conteúdo */
+    max-width: 90vw; /* Ajuste para telas menores */
+    max-height: 90vh; /* Limita altura para dispositivos menores */
+    width: 100%;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Início do conteúdo */
+    gap: 1rem; /* Espaço entre as divisões */
     align-items: center;
-    padding: 1rem;
+    overflow: auto; /* Garante rolagem interna */
 }
 
-
+/* Modal Conteúdo */
 .modal-conteudo {
-    width: 60vw;
-    height: 70vw;
-    background-color: var(--cor-04);
-    color: var(--cor-01);
-    padding: 1rem;
-    margin: 3rem 0.2rem;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaço entre divs */
+    width: 100%; /* Ocupa todo o espaço disponível */
 }
 
 .modal-conteudo p {
@@ -134,9 +151,33 @@ button:hover {
     text-align: justify;
 }
 
+/* Cada Div no Modal */
+.modal-conteudo > div {
+    background-color: var(--cor-03);
+    border: 1px solid var(--cor-02);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: left;
+    overflow-wrap: break-word; /* Garante quebra de texto */
+    word-wrap: break-word;
+    width: 100%;
+    box-shadow: 0 0.2rem 0.5rem var(--cor-alpha);
+}
+
+/* Botão Fechar */
 .btn-fechar {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
     background-color: var(--cor-principal);
     color: var(--cor-04);
+    border-radius: 0.3rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: sticky;
+    top: 0; /* Garante visibilidade em dispositivos menores */
+    z-index: 1;
 }
 
 .btn-fechar:hover {
@@ -166,5 +207,48 @@ button:hover {
 
     to {
         transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main > div {
+        max-width: 90%; /* Ajusta largura para dispositivos menores */
+    }
+
+    main h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+
+    main > div {
+        padding: 1rem;
+    }
+
+    main h3 {
+        font-size: 1rem;
+    }
+
+    .texto {
+        font-size: 0.8rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1.2rem;
+    }
+
+    .btn-fechar {
+        font-size: 0.8rem;
     }
 }
