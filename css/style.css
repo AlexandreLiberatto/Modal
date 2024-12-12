@@ -90,16 +90,27 @@ button:hover {
     background-color: var(--cor-alpha);
     z-index: 10;
     display: none;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
 }
 
+/* Ajuste para centralizar modal-base */
 .modal-base {
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: var(--cor-04);
     box-shadow: 0 0.1rem 1rem 0 var(--cor-alpha);
+    max-width: 60vw; /* Garante uma largura máxima para o modal */
+    max-height: 80vh; /* Garante uma altura máxima para o modal */
+    width: 100%; /* Ajusta para dispositivos menores */
+    height: auto; /* Adapta o tamanho do conteúdo */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Início do conteúdo */
+    align-items: center;
+    padding: 1rem;
 }
+
 
 .modal-conteudo {
     width: 60vw;
@@ -117,8 +128,8 @@ button:hover {
 }
 
 .btn-fechar {
-    background-color: var(--cor-03);
-    color: var(--cor-01);
+    background-color: var(--cor-principal);
+    color: var(--cor-04);
 }
 
 .btn-fechar:hover {
