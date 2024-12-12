@@ -79,3 +79,74 @@ button:hover {
     cursor: pointer;
     background-color: var(--cor-01);
 }
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cor-alpha);
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-base {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: var(--cor-04);
+    box-shadow: 0 0.1rem 1rem 0 var(--cor-alpha);
+}
+
+.modal-conteudo {
+    width: 60vw;
+    height: 70vw;
+    background-color: var(--cor-04);
+    color: var(--cor-01);
+    padding: 1rem;
+    margin: 3rem 0.2rem;
+    overflow: auto;
+}
+
+.modal-conteudo p {
+    margin: 1rem;
+    text-align: justify;
+}
+
+.btn-fechar {
+    background-color: var(--cor-03);
+    color: var(--cor-01);
+}
+
+.btn-fechar:hover {
+    background-color: var(--cor-01);
+    color: var(--cor-04);
+}
+
+/* Chamar animação */
+.modal-base.slide {
+    animation-name: slide;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+
+/* Animação */
+@keyframes slide {
+    from {
+        opacity: 0;
+        transform: translateY(-5rem);
+    }
+
+    50% {
+        transform: translateY(0.3rem);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
