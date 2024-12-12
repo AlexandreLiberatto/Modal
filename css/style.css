@@ -39,9 +39,11 @@ main {
     margin: 2rem auto;
     display: flex;
     justify-content: center;
+    gap: 1rem;
 }
 
 main > div {
+    flex: 1;
     max-width: 20rem;
     height: 22rem;
     padding: 3rem 1rem;
@@ -57,12 +59,17 @@ main > div:hover {
     border-color: var(--cor-principal);
 }
 
-main p {
+.texto p {
+    display: none;
     /* Número de linhas... */
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.texto p:first-child {
+    display: block;
 }
 
 button {
